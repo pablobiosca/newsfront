@@ -1,12 +1,24 @@
-import Home from "./pages/home.jsx" 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Header from "@/components/Layouts/Header/Header"
+import Home from "@/pages/home/home"
+import { useNews } from "@/hooks/useNews"
+import NewDetails from "@/pages/newDetails/newDetails"
 
 function App() {
+  
+  const { news, setNews,archiveNews, deleteNews, refreshNews } = useNews()
+
   return (
-    <>
-      <Home>
-      </Home>
-    </>
-  )
+    <Router>
+      <Header refreshNews={refreshNews}/>
+      <Routes>
+        <Route path="/news" element={<Home news={news} setNews={setNews} archiveNews={archiveNews} deleteNews={deleteNews}/>} />
+        <Route path="/archived" element={<Home news={news} setNews={setNews} archiveNews={archiveNews} deleteNews={deleteNews}/>} />
+        <Route path="/:id" element={<NewDetails></NewDetails>}/>
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

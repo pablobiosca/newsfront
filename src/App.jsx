@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes,Navigate, Route } from "react-router-dom"
 import Header from "@/components/Layouts/Header/Header"
 import Home from "@/pages/home/home"
 import { useNews } from "@/hooks/useNews"
@@ -15,7 +15,7 @@ function App() {
         <Route path="/news" element={<Home news={news} setNews={setNews} archiveNews={archiveNews} deleteNews={deleteNews}/>} />
         <Route path="/archived" element={<Home news={news} setNews={setNews} archiveNews={archiveNews} deleteNews={deleteNews}/>} />
         <Route path="/:id" element={<NewDetails></NewDetails>}/>
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Navigate to="/news" />} />
       </Routes>
     </Router>
   );

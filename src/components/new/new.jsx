@@ -1,4 +1,5 @@
 import "./New.css"
+import { Link } from "react-router-dom";
 
 const New = ({ _new, archiveNews, deleteNews }) => {
 
@@ -35,7 +36,7 @@ const New = ({ _new, archiveNews, deleteNews }) => {
 
         <div className="new-content">
 
-          <h2 className="new-content-title">{_new.title}</h2>
+          <Link to={`/${_new.id || _new._id}`} className="new-content-title">{_new.title}</Link>
           <p className="new-content-description">{_new.description}</p>
           <p className="new-content-author"><strong>Autor: </strong> {_new.author}</p>
 

@@ -1,0 +1,14 @@
+.news-container{
+    /* border: 1px solid white; */
+    width: 50%;
+
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            40%,
+            1fr
+        )
+    );
+    gap: 1em;
+}
